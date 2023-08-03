@@ -1,13 +1,90 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App {
+    background: linear-gradient(to bottom, rgba(255, 0, 0, 1) 0%, rgba(255, 0, 0, 0.05) 100%);
+    padding: 0.5rem;
+    height: 100vh;
+    min-height: 100%;
+    width: 99vw;
+    max-height: 100%;
 }
+
+.landingPage {
+    height: 70vh;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.landingPage h1 {
+    font-family: "Arial", sans-serif;
+    font-size: 4rem;
+    color: black;
+    text-shadow: 2px 2px 4px rgba(190, 4, 4, 0.5);
+    text-transform: uppercase;
+    margin: 20px 0;
+    padding: 10px;
+    text-align: center;
+}
+.landingPage p{
+    text-shadow: 1px 1px 2px rgba(190, 4, 4, 0.5);
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 100% !important;
+    min-height: 80%;
+}
+.card-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+    width: 100% !important;
+    margin: 10px;
+}
+.course-details-header{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+.banner-wrapper {
+    background: linear-gradient(177.7deg,
+        rgba(225, 12, 12, 0.3) 1.63%,
+        rgba(242, 54, 54, 0.009) 148.18%);
+    border-radius: 1rem;
+    padding: 0.5rem;
+    height: 300px;
+    width: 80%;
+  }
+  .banner-wrapper img{
+    width: 100%;
+    height: 300px !important;
+    border-radius: 1rem;
+  }
+  .course-description{
+    color: rgb(0, 0, 0);
+    text-align: left;
+    width: 80%;
+    border-bottom: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+  }
+  @media (max-width:500px){
+    .course-description{
+        flex-direction: column;
+        gap: 10px;
+        margin: 5px;
+    }
+  }
+  
