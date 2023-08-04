@@ -40,10 +40,10 @@
 
 @media(max-width:500px){
     .card{
-        width: 150px;
-        min-height: 200px;
+        width: 120px;
+        min-height: 160px;
     }
     .display-image-card {
-        height: 160px;
+        height: 140px;
     }
 }
