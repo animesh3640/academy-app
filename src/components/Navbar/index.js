@@ -1,10 +1,28 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom';
+import {NavLink, useNavigate} from 'react-router-dom';
 import './styles.css'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase';
+import { toast } from 'react-toastify';
+import { clear_user } from '../../redux/actions/actionCreators';
+import { signOut } from 'firebase/auth';
+import { useDispatch } from 'react-redux';
 const Navbar = () => {
-  const [user,loading,error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  function handleLogout() {
+    signOut(auth)
+        .then(() => {
+            toast.success('user logged out !');
+            navigate('/')
+            dispatch(clear_user())
+        })
+        .catch((error) => {
+            toast.error(error.message)
+        })
+
+}
   return (
     <div className='navbar'>
     <div className='links'>
@@ -14,7 +32,7 @@ const Navbar = () => {
       <NavLink to='/courses' >Courses</NavLink>
       <NavLink to='/profile' >Profile</NavLink>
       <NavLink to='/adminpage' >Admin ?</NavLink>
-     
+      { <NavLink onClick={handleLogout} >Logout</NavLink>}
     </div>
   </div>
   )

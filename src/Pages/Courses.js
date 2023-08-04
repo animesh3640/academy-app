@@ -11,7 +11,6 @@ const Courses = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const courses = useSelector(state=>state.courses)
-    console.log(courses)
     useEffect(() => {
         const unsubscribe = onSnapshot(
             query(collection(db, 'courses')),

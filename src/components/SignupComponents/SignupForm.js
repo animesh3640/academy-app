@@ -41,15 +41,17 @@ const SignupForm = () => {
             );
             const user = userCredential.user;
             
-  
+            const lastFourDigits = number.slice(-4);
             // saving user's details in db
-            await setDoc(doc(db, 'users', user.uid), {
-              name: name,
-              number:number,
-              email: user.email,
-              uid: user.uid,
-              profilePic: fileURL, // added profile pic url to doc
-            });
+              await setDoc(doc(db, 'students',user.uid), {
+                name: name,
+                number:number,
+                email: user.email,
+                uid: user.uid,
+                profilePic: fileURL, // added profile pic url to doc
+                applicationStatus:'pending',
+                selectedCourse:[]
+              });
   
             // saving user in redux state 
             dispatch(
@@ -58,7 +60,9 @@ const SignupForm = () => {
                 number:number,
                 email: user.email,
                 uid: user.uid,
-                profilePic: fileURL, //setting pic url to redux 
+                profilePic: fileURL, //setting pic url to redux
+                applicationStatus:'pending',
+                selectedCourse:[]
               })
             )
             toast.success('User Has been Created !');
@@ -82,7 +86,8 @@ const SignupForm = () => {
     const profileImageHandle = async(file) => { 
       setLoading(true);
       try {
-        const imageRef = ref(storage, `profile/${Date.now()}`);
+        const lastFourDigits = number.slice(-4);
+        const imageRef = ref(storage, `students-pics/${name}-${lastFourDigits}`);
         await uploadBytes(imageRef, file);
         const imageURL = await getDownloadURL(imageRef);
         setFileURL(imageURL);

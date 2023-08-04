@@ -26,10 +26,9 @@ const LoginForm = () => {
         );
         const user = userCredential.user;
 
-        const userDoc = await getDoc(doc(db, 'users', user.uid));
+        const userDoc = await getDoc(doc(db, 'students', user.uid));
         const userData = userDoc.data();
-
-
+          console.log("Login = ",userData)
         //saving user in redux state 
         dispatch(
           set_user({
@@ -37,7 +36,9 @@ const LoginForm = () => {
             number:userData.number,
             email: user.email,
             uid: user.uid,
-            profilePic: userData.profilePic,
+            profilePic: userData.profilePic, // added profile pic url to doc
+            applicationStatus:userData.applicationStatus,
+            selectedCourse:userData.selectedCourse
           })
         )
         toast.success('Login Successfull !')
