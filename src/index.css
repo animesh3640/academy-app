@@ -3,39 +3,32 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
-
+.parent-container{
+    height: 100vh;
+    overflow: scroll;
+}
 .App {
     background: linear-gradient(to bottom, rgba(255, 0, 0, 1) 0%, rgba(255, 0, 0, 0.05) 100%);
     padding: 0.5rem;
     height: 105vh;
     min-height: 100%;
     width: 100vw;
-    max-height: 104vh;
-    
+    max-height: 104vh;  
 }
 
-.landingPage {
-    height: 100%;
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-}
-
-.landingPage h1 {
+.wrapper h1 { 
+    margin-top: 200px;
     font-family: "Arial", sans-serif;
     font-size: 4rem;
     color: black;
     text-shadow: 2px 2px 4px rgba(190, 4, 4, 0.5);
     text-transform: uppercase;
-    margin: 20px 0;
-    padding: 10px;
     text-align: center;
-    margin-bottom: 50%;
+    
 }
 
-.landingPage p {
+.landingP{
+    text-align: center;
     text-shadow: 1px 1px 2px rgba(190, 4, 4, 0.5);
 }
 
@@ -46,7 +39,6 @@ body {
     align-items: center;
     width: 100% !important;
     min-height: 100%;
-    
 }
 
 .card-wrapper {
@@ -105,8 +97,4 @@ body {
     justify-content: center;
     align-items: center;
     width: 50%;
-}
-.parent-container{
-    height: 100vh;
-    overflow: scroll;
 }

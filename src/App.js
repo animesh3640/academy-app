@@ -116,8 +116,8 @@ function App() {
             <Route path='/yourcourse' element={<YourCourses />} />
             <Route path='/coursedetails/:id' element={<CourseDetails />}></Route>
           </Route>
+        
         </Routes>
-        <Footer></Footer>
       </div>
 
     </div>

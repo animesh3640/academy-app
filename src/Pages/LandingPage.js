@@ -2,9 +2,11 @@ import React from 'react'
 
 const LandingPage = () => {
   return (
-    <div className='landingPage'>
+    <div className='wrapper'>
+      <div>
         <h1>Karne's Academy</h1>
-        <p style={{fontStyle:'italic'}}>" Don't Study Hard Study Smart "</p>
+        <p className="landingP" style={{ fontStyle: 'italic' }}>" Don't Study Hard Study Smart "</p>
+      </div>
     </div>
   )
 }
