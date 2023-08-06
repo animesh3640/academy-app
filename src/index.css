@@ -7,11 +7,11 @@ body {
 .App {
     background: linear-gradient(to bottom, rgba(255, 0, 0, 1) 0%, rgba(255, 0, 0, 0.05) 100%);
     padding: 0.5rem;
-    height: 100vh;
+    height: 105vh;
     min-height: 100%;
     width: 100vw;
     max-height: 104vh;
-    overflow: scroll;
+    
 }
 
 .landingPage {
@@ -105,4 +105,8 @@ body {
     justify-content: center;
     align-items: center;
     width: 50%;
+}
+.parent-container{
+    height: 100vh;
+    overflow: scroll;
 }

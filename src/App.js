@@ -48,7 +48,7 @@ function App() {
                   profilePic: userData.profilePic, // added profile pic url to doc
                   applicationStatus: userData.applicationStatus,
                   selectedCourse: userData.selectedCourse,
-                  isStudent:userData.isStudent
+                  isStudent: userData.isStudent
                 })
               )
 
@@ -95,28 +95,31 @@ function App() {
       <ToastContainer />
       <Navbar></Navbar>
 
-      <Routes>
-        <Route path='/' element={<LandingPage />} />
-        <Route path='/signup' element={<AuthenticationPage />} />
-        <Route path='/adminlogin' element={<AdminAuthentication />} />
-        <Route element={<AdminPrivateRoutes />}>
-          <Route path='/adminPage' element={<AdminPage />}></Route>
-          <Route path='/allstudents' element={<AllStudents />}></Route>
-          <Route path='/allteachers' element={<AllTeachers />}></Route>
-          <Route path='/allcourses' element={<AllCourses />}></Route>
-          <Route path='/shortlisted_students' element={<ShortlistedStudents />}></Route>
-          <Route path='/rejected_students' element={<RejectedStudents />}></Route>
-          <Route path='/studentDetails/:id' element={<StudentDetails />}></Route>
-        </Route>
-        <Route element={<PrivateRoutes />}>
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/editprofile' element={<EditProfile />} />
-          <Route path='/courses' element={<Courses />} />
-          <Route path='/yourcourse' element={<YourCourses />} />
-          <Route path='/coursedetails/:id' element={<CourseDetails />}></Route>
-        </Route>
-      </Routes>
-      <Footer></Footer>
+      <div className='parent-container'>
+        <Routes>
+          <Route path='/' element={<LandingPage />} />
+          <Route path='/signup' element={<AuthenticationPage />} />
+          <Route path='/adminlogin' element={<AdminAuthentication />} />
+          <Route element={<AdminPrivateRoutes />}>
+            <Route path='/adminPage' element={<AdminPage />}></Route>
+            <Route path='/allstudents' element={<AllStudents />}></Route>
+            <Route path='/allteachers' element={<AllTeachers />}></Route>
+            <Route path='/allcourses' element={<AllCourses />}></Route>
+            <Route path='/shortlisted_students' element={<ShortlistedStudents />}></Route>
+            <Route path='/rejected_students' element={<RejectedStudents />}></Route>
+            <Route path='/studentDetails/:id' element={<StudentDetails />}></Route>
+          </Route>
+          <Route element={<PrivateRoutes />}>
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/editprofile' element={<EditProfile />} />
+            <Route path='/courses' element={<Courses />} />
+            <Route path='/yourcourse' element={<YourCourses />} />
+            <Route path='/coursedetails/:id' element={<CourseDetails />}></Route>
+          </Route>
+        </Routes>
+        <Footer></Footer>
+      </div>
+
     </div>
 
   );
