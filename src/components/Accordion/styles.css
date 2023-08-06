@@ -3,7 +3,8 @@
     border-radius: 4px;
     margin-bottom: 10px;
     cursor: pointer;
-    width: 360px;
+    width: 60%;
+    display: block;
 }
 
 .accordion.open {
@@ -33,4 +34,9 @@
     display: block;
     margin-top: 10px;
     border-radius: 20%;
+}
+@media(max-width:500px) {
+    .accordion {
+        width: 350px;
+    }
 }
