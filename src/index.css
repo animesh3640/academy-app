@@ -6,6 +6,7 @@ body {
 .parent-container{
     height: 100vh;
     overflow: scroll;
+    overflow-x: hidden;
 }
 .App {
     background: linear-gradient(to bottom, rgba(255, 0, 0, 1) 0%, rgba(255, 0, 0, 0.05) 100%);
@@ -41,6 +42,7 @@ body {
     width: 100% !important;
     min-height: 100%;
     margin-bottom: 0px;
+    margin: 0px;
 }
 
 .card-wrapper {
