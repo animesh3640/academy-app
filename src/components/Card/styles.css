@@ -1,26 +1,27 @@
 .card {
-    width: 250px;
-    min-height: 250px;
+    width: 220px;
+    min-height: 220px;
+    height: 200px;
     background: linear-gradient(177.7deg,
             rgba(0, 0, 0, 0.3) 1.63%,
             rgb(237, 6, 6) 148.18%);
     border-radius: 1rem;
-    padding: 0.5rem;
+    padding: 0.4rem;
     cursor: pointer;
 }
 
 .display-image-card {
     width: 100%;
-    height: 220px;
-    border-top-left-radius: 0.8rem;
-    border-top-right-radius: 0.8rem;
+    height: 180px;
+    border-top-left-radius: 0.6rem;
+    border-top-right-radius: 0.6rem;
 
 }
 
 .title-card {
     color: white;
     text-decoration: none;
-    margin: 0.5rem 0rem;
+    margin: 0px;
 }
 
 .card:hover {
@@ -37,15 +38,20 @@
     font-size: larger;
     font-weight: 500;
     text-align: center;
+    margin: 4%;
 }
 
 @media(max-width:500px) {
     .card {
         width: 120px;
-        min-height: 160px;
+        height: 160px;
+        min-height: 150px;
     }
 
     .display-image-card {
-        height: 140px;
+        height: 70%;
+    }
+    .titleBar {
+        margin: 2px;
     }
 }
