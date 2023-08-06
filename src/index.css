@@ -9,12 +9,12 @@ body {
     padding: 0.5rem;
     height: 100vh;
     min-height: 100%;
-    width: 99vw;
+    width: 100vw;
     max-height: 100%;
 }
 
 .landingPage {
-    height: 70vh;
+    height: 100vh;
     flex-direction: column;
     display: flex;
     justify-content: center;
