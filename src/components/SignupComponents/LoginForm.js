@@ -38,7 +38,8 @@ const LoginForm = () => {
             uid: user.uid,
             profilePic: userData.profilePic, // added profile pic url to doc
             applicationStatus:userData.applicationStatus,
-            selectedCourse:userData.selectedCourse
+            selectedCourse:userData.selectedCourse,
+            isStudent:userData.isStudent
           })
         )
         toast.success('Login Successfull !')

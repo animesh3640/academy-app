@@ -23,7 +23,7 @@ function EditProfileForm() {
       profilePic:fileURL
     }
     try { 
-      await setDoc(doc(db, "users", user.uid),updatedData);
+      await setDoc(doc(db, "students", user.uid),updatedData);
       toast.success('Profile Updated !')
       setLoading(false)
       

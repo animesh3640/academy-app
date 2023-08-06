@@ -1,17 +1,74 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from '../components/Button'
 import { useNavigate } from 'react-router-dom'
+import { collection, onSnapshot, query } from 'firebase/firestore';
+import { db } from '../firebase';
+import Card from '../components/Card';
 
 const AllStudents = () => {
-  const navigate= useNavigate();
+  var [studentData, setStudentData] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(
+      query(collection(db, 'students')),
+      (querySnapshot) => {
+        const studentD = [];
+        querySnapshot.forEach((doc) => {
+          studentD.push({ id: doc.id, ...doc.data() });
+        });
+        setStudentData(studentD);
+      },
+      (error) => {
+        console.log('Error fetching Students:', error)
+      }
+    );
+    return () => {
+      unsubscribe();
+    };
+
+  }, []);
+
+  if(studentData){
+    var onlyStudent = studentData.filter((element)=>{
+      return element.isStudent
+    })
+  }
   return (
     <div className='wrapper'>
-        <h2>Students</h2>
-        <Button
-          width={'100px'}
-          text={'Shortlist Students'}
-          onClick={()=>{navigate('/shortlist_students')}}
-        />
+      <h2>New Requests</h2>
+      {
+        onlyStudent.length > 0 && (
+          <div className='card-wrapper'>
+            {
+              onlyStudent.map((element) => (
+                element.applicationStatus=='pending'&&
+                <Card
+                  key={element.id}
+                  id={element.id}
+                  title={element.name}
+                  displayImage={element.profilePic}
+                  path={`studentDetails/${element.id}`}
+                />
+              ))
+            }
+          </div>
+        )
+      }
+      <div style={{display:'flex',flexWrap:'wrap'}}>
+      <Button
+        width={'120px'}
+        text={'Shortlisted Students'}
+        onClick={() => { navigate('/shortlisted_students') }}
+        color={'green'}
+      />
+      <Button
+        width={'120px'}
+        text={'Rejected Students'}
+        color={'red'}
+        onClick={() => { navigate('/rejected_students') }}
+      />
+      </div>
     </div>
   )
 }

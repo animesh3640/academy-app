@@ -87,4 +87,10 @@ body {
         margin: 5px;
     }
   }
-  
+  .buttons-wrapper{
+    display: flex ;
+    flex-wrap: wrap ;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+  }

@@ -40,7 +40,7 @@ const Courses = () => {
                     {
                         courses.map((element)=>(
                             <Card
-                            key={element.id}
+                                key={element.id}
                                 id={element.id}
                                 title={element.name}
                                 displayImage={element.displayImage}

@@ -9,9 +9,9 @@ import Profile from './Pages/Profile';
 import { useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from './firebase';
-import { doc, onSnapshot } from 'firebase/firestore';
+import { collection, doc, onSnapshot } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
-import { set_user } from './redux/actions/actionCreators';
+import { set_courses, set_user } from './redux/actions/actionCreators';
 import EditProfile from './Pages/EditProfile';
 import PrivateRoutes from './components/PrivateRoutes';
 import AdminAuthentication from './Pages/AdminAuthentication';
@@ -23,10 +23,14 @@ import AllCourses from './Pages/AllCourses';
 import AddCourses from './Pages/AddCourses';
 import CourseDetails from './Pages/CourseDetails';
 import Courses from './Pages/Courses';
-import ShortlistStudentForm from './Pages/ShortlistStudentForm';
+import YourCourses from './Pages/YourCourses';
+import StudentDetails from './Pages/StudentDetails';
+import ShortlistedStudents from './Pages/ShortlistedStudents';
+import RejectedStudents from './Pages/RejectedStudents';
 
 function App() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     const unsubscibeAuth = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -43,7 +47,8 @@ function App() {
                   uid: user.uid,
                   profilePic: userData.profilePic, // added profile pic url to doc
                   applicationStatus: userData.applicationStatus,
-                  selectedCourse: userData.selectedCourse
+                  selectedCourse: userData.selectedCourse,
+                  isStudent:userData.isStudent
                 })
               )
 
@@ -62,6 +67,29 @@ function App() {
       unsubscibeAuth()
     };
   }, [])
+
+  // fetch courses collection data
+  useEffect(() => {
+    const coursesCollectionRef = collection(db, 'courses');
+    const unsubscibeSnapshot = onSnapshot(
+      coursesCollectionRef,
+      (querySnapshot) => {
+        var cData = [];
+        querySnapshot.forEach((doc) => {
+          // Access individual document data using doc.data()
+          const data = doc.data();
+          cData.push(data)
+        });
+        dispatch(set_courses(cData));
+
+      }, (error) => {
+        console.error('Error fetching documents:', error);
+      });
+    return () => {
+      unsubscibeSnapshot()
+    }
+  }, [])
+
   return (
     <div className="App">
       <ToastContainer />
@@ -76,13 +104,15 @@ function App() {
           <Route path='/allstudents' element={<AllStudents />}></Route>
           <Route path='/allteachers' element={<AllTeachers />}></Route>
           <Route path='/allcourses' element={<AllCourses />}></Route>
-          <Route path='/addcourses' element={<AddCourses />}></Route>
-          <Route path='/shortlist_students' element={<ShortlistStudentForm />}></Route>
+          <Route path='/shortlisted_students' element={<ShortlistedStudents />}></Route>
+          <Route path='/rejected_students' element={<RejectedStudents />}></Route>
+          <Route path='/studentDetails/:id' element={<StudentDetails />}></Route>
         </Route>
         <Route element={<PrivateRoutes />}>
           <Route path='/profile' element={<Profile />} />
           <Route path='/editprofile' element={<EditProfile />} />
           <Route path='/courses' element={<Courses />} />
+          <Route path='/yourcourse' element={<YourCourses />} />
           <Route path='/coursedetails/:id' element={<CourseDetails />}></Route>
         </Route>
       </Routes>

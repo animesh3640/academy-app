@@ -50,7 +50,8 @@ const SignupForm = () => {
                 uid: user.uid,
                 profilePic: fileURL, // added profile pic url to doc
                 applicationStatus:'pending',
-                selectedCourse:[]
+                selectedCourse:[],
+                isStudent:true
               });
   
             // saving user in redux state 
@@ -62,7 +63,8 @@ const SignupForm = () => {
                 uid: user.uid,
                 profilePic: fileURL, //setting pic url to redux
                 applicationStatus:'pending',
-                selectedCourse:[]
+                selectedCourse:[],
+                isStudent:true
               })
             )
             toast.success('User Has been Created !');

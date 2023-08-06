@@ -22,7 +22,7 @@ const Profile = () => {
 
     }
     const user = useSelector(state => state.user);
- 
+
     return (
         <div className='wrapper'>
             {user.name ? (
@@ -32,22 +32,30 @@ const Profile = () => {
                     />
                     <p>{user.name}</p>
                     <p>{user.uid}</p>
-                    <p> Number : {user.number}  Email : {user.email} </p>
-                    <Button
-                        width={'15%'}
-                        text={'Edit Profile'}
-                        onClick={()=>{navigate('/editprofile')}}
-                        disabled={false}
-                    />
-                    <Button
-                        width={'15%'}
-                        text={'Logout'}
-                        onClick={handleLogout}
-                        disabled={false}
-                    />
-                   
+                    <p style={{ textAlign: 'center' }}> Number : {user.number}  Email : {user.email} </p>
+                    <div className='buttons-wrapper'>
+                        <Button
+                            width={'100px'}
+                            text={'Edit Profile'}
+                            onClick={() => { navigate('/editprofile') }}
+                            disabled={false}
+                        />
+                        <Button
+                            width={'100px'}
+                            text={'Your Courses'}
+                            onClick={()=>{navigate('/yourcourse')}}
+                            disabled={false}
+                        />
+                        <Button
+                            width={'100px'}
+                            text={'Logout'}
+                            onClick={handleLogout}
+                            disabled={false}
+                        />
+                    </div>
+
                 </>
-            ):"Please Login First"}
+            ) : "Please Login First"}
         </div>
     )
 }

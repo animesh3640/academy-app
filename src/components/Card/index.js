@@ -7,7 +7,7 @@ function Card({id, title, displayImage,path }) {
         <Link to={`/${path}`}>
             <div className='card'>
                 <img className='display-image-card' src={displayImage} alt="" />
-                <div className='titleBar'>{title}</div>
+                <p className='titleBar'>{title}</p>
             </div>
         </Link>
     )
