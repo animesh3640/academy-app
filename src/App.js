@@ -48,7 +48,8 @@ function App() {
                   profilePic: userData.profilePic, // added profile pic url to doc
                   applicationStatus: userData.applicationStatus,
                   selectedCourse: userData.selectedCourse,
-                  isStudent: userData.isStudent
+                  isStudent: userData.isStudent,
+                  paymentStatus:userData.paymentStatus
                 })
               )
 

@@ -8,9 +8,9 @@ import { useSelector } from 'react-redux';
 
 const CourseDetails = () => {
     let [course, setCourse] = useState([]);
-    let courseSelected=useRef(false);
-    let currentStudent = useSelector(state=>state.user);
-    
+    let courseSelected = useRef(false);
+    let currentStudent = useSelector(state => state.user);
+
     const navigate = useNavigate();
     const { id } = useParams();
 
@@ -57,10 +57,10 @@ const CourseDetails = () => {
         }
     };
 
-    if(currentStudent.selectedCourse){
-        currentStudent.selectedCourse.map((element)=>{
-            if(element===course.name){
-               courseSelected.current = true;
+    if (currentStudent.selectedCourse) {
+        currentStudent.selectedCourse.map((element) => {
+            if (element === course.name) {
+                courseSelected.current = true;
             }
         })
     }
@@ -77,6 +77,16 @@ const CourseDetails = () => {
                         onClick={studentData}
                     />)
                 }
+                {
+                    courseSelected.current && currentStudent.applicationStatus=='approved'&&
+                    (
+                        <Button
+                        width={'80px'}
+                        text={'Make Payment'}
+                        onClick={()=>{toast.warning('Payment getway Comming Soon till that you can contact admin for payment details.')}}
+                    />
+                    )
+                }
             </div>
             <div className='banner-wrapper'>
                 <img src={course.bannerImage} alt="Course Banner Image" />
@@ -88,7 +98,7 @@ const CourseDetails = () => {
             <p className='course-description'
                 style={{ border: 'none', fontWeight: 'bolder' }}
             >Course Overview</p>
-            <p className='course-description' style={{paddingBottom:'20px'}}>{course.desciption}</p>
+            <p className='course-description' style={{ paddingBottom: '20px' }}>{course.desciption}</p>
         </div>
     )
 }

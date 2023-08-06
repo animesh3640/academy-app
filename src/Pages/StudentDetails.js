@@ -9,13 +9,13 @@ const StudentDetails = () => {
   const [student, setStudent] = useState();
   const navigate = useNavigate();
   const { id } = useParams();
-  const [status,setStatus]=useState(()=>{return 'pending'})
-  
+  const [status, setStatus] = useState(() => { return 'pending' })
+
   useEffect(() => {
     if (id) {
       getData();
     }
-  }, [id,status]);
+  }, [id, status]);
 
   const getData = async () => {
     try {
@@ -33,16 +33,27 @@ const StudentDetails = () => {
     }
   };
 
-  async function changeStatus(value){
-    try { 
-      await setDoc(doc(db, "students", id),{...student,applicationStatus:value});
-      if(value=='approved'){toast.success('Application Approved !')}
-      else{toast.success('Application  Rejected !')}
+  async function changeStatus(value) {
+    try {
+      await setDoc(doc(db, "students", id), { ...student, applicationStatus: value });
+      if (value == 'approved') { toast.success('Application Approved !') }
+      else { toast.success('Application  Rejected !') }
       setStatus(value)
     } catch (e) {
-      console.log("Error = ",e)
+      console.log("Error = ", e)
       toast.error(e.message)
-      
+
+    }
+  }
+
+  async function changePaymentStatus() {
+    try {
+      await setDoc(doc(db, "students", id), { ...student, paymentStatus: true });
+      toast.success('Payment Status Changed !')
+    } catch (e) {
+      console.log("Error = ", e)
+      toast.error(e.message)
+
     }
   }
 
@@ -73,19 +84,34 @@ const StudentDetails = () => {
               Application Status : {student.applicationStatus.toUpperCase()}
             </p>}
             {
+              student.paymentStatus ? <p style={{ color: 'green' }}>Payment Done !</p>
+                : <p style={{ color: 'red' }}>Payment Not Yet Done !</p>
+            }
+            {
               student.applicationStatus == 'pending' &&
-              <div style={{display:'flex',flexWrap:'wrap'}}>
+              <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                 <Button
                   width={'80px'}
                   text={'Approve'}
                   color={'green'}
-                  onClick={()=>{changeStatus('approved')}}
+                  onClick={() => { changeStatus('approved') }}
                 />
                 <Button
                   width={'80px'}
                   color={'red'}
                   text={'Reject'}
-                  onClick={()=>{changeStatus('rejected')}}
+                  onClick={() => { changeStatus('rejected') }}
+                />
+              </div>
+            }
+            {
+              !student.paymentStatus &&
+              <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                <Button
+                  width={'80px'}
+                  text={'Payment Done'}
+                  color={'green'}
+                  onClick={() => { changePaymentStatus() }}
                 />
               </div>
             }

@@ -7,6 +7,7 @@ import Card from '../components/Card';
 
 const AllStudents = () => {
   var [studentData, setStudentData] = useState([]);
+  var [pendingStudent,setPendingStudent] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,15 +35,23 @@ const AllStudents = () => {
       return element.isStudent
     })
   }
+  //check pending request student exist or not 
+ var stpen=[];
+  if(onlyStudent){
+    stpen = onlyStudent.filter((element)=>{
+      return element.applicationStatus=='pending'
+    })
+  }
+  
   return (
     <div className='wrapper'>
-      <h2>New Requests</h2>
+      {stpen.length>0?<h2>Pending Requests</h2>:<h2> No Pending Requests !</h2>}
       {
         onlyStudent.length > 0 && (
           <div className='card-wrapper'>
             {
               onlyStudent.map((element) => (
-                element.applicationStatus=='pending'&&
+                element.applicationStatus=='pending' || !element.paymentStatus && element.applicationStatus=='approved' &&
                 <Card
                   key={element.id}
                   id={element.id}

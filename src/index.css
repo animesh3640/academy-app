@@ -4,7 +4,7 @@ body {
     box-sizing: border-box;
 }
 .parent-container{
-    height: 100vh;
+    height: 100%;
     overflow: scroll;
     overflow-x: hidden;
 }
