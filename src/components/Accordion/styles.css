@@ -37,6 +37,6 @@
 }
 @media(max-width:500px) {
     .accordion {
-        width: 350px;
+        width: 320px;
     }
 }
