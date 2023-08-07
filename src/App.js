@@ -27,6 +27,7 @@ import YourCourses from './Pages/YourCourses';
 import StudentDetails from './Pages/StudentDetails';
 import ShortlistedStudents from './Pages/ShortlistedStudents';
 import RejectedStudents from './Pages/RejectedStudents';
+import UploadLectures from './Pages/UploadLectures';
 
 function App() {
   const dispatch = useDispatch();
@@ -116,6 +117,7 @@ function App() {
             <Route path='/courses' element={<Courses />} />
             <Route path='/yourcourse' element={<YourCourses />} />
             <Route path='/coursedetails/:id' element={<CourseDetails />}></Route>
+            <Route path='/courses/:id/upload-lectures' element={<UploadLectures />}></Route>
           </Route>
         
         </Routes>

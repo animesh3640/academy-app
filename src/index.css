@@ -108,3 +108,9 @@ body {
     scrollbar-width: none;
   }
   
+  .lectures{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    
+  }

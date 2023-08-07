@@ -32,7 +32,6 @@ const Navbar = () => {
       <NavLink to='/courses' >Courses</NavLink>
       <NavLink to='/profile' >Profile</NavLink>
       <NavLink to='/adminpage' >Admin ?</NavLink>
-      { <NavLink onClick={handleLogout} >Logout</NavLink>}
     </div>
   </div>
   )

@@ -42,7 +42,7 @@ const AllStudents = () => {
       return element.applicationStatus=='pending'
     })
   }
-  
+  console.log(onlyStudent)
   return (
     <div className='wrapper'>
       {stpen.length>0?<h2>Pending Requests</h2>:<h2> No Pending Requests !</h2>}
@@ -51,8 +51,8 @@ const AllStudents = () => {
           <div className='card-wrapper'>
             {
               onlyStudent.map((element) => (
-                element.applicationStatus=='pending' || !element.paymentStatus && element.applicationStatus=='approved' &&
-                <Card
+                element.applicationStatus=='pending' && !element.paymentStatus &&
+                <Card 
                   key={element.id}
                   id={element.id}
                   title={element.name}
