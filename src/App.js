@@ -28,6 +28,9 @@ import StudentDetails from './Pages/StudentDetails';
 import ShortlistedStudents from './Pages/ShortlistedStudents';
 import RejectedStudents from './Pages/RejectedStudents';
 import UploadLectures from './Pages/UploadLectures';
+import OurFaculty from './Pages/OurFaculty';
+import AboutUs from './components/AboutUs';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -102,6 +105,8 @@ function App() {
           <Route path='/' element={<LandingPage />} />
           <Route path='/signup' element={<AuthenticationPage />} />
           <Route path='/adminlogin' element={<AdminAuthentication />} />
+          <Route path='/aboutus' element={<AboutUs />} />
+          <Route path='/ourfaculty' element={<OurFaculty />} />
           <Route element={<AdminPrivateRoutes />}>
             <Route path='/adminPage' element={<AdminPage />}></Route>
             <Route path='/allstudents' element={<AllStudents />}></Route>

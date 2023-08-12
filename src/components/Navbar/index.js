@@ -28,7 +28,7 @@ const Navbar = () => {
     <div className='links'>
       <NavLink to='/' >Home</NavLink>
       { ! user &&<NavLink to='/signup' >Signup</NavLink>}
-      <NavLink to='/starts-for-free' >Start for free</NavLink>
+      <NavLink to='/aboutus' >About Us</NavLink>
       <NavLink to='/courses' >Courses</NavLink>
       <NavLink to='/profile' >Profile</NavLink>
       <NavLink to='/adminpage' >Admin ?</NavLink>

@@ -5,7 +5,7 @@ import { collection, onSnapshot, query } from 'firebase/firestore';
 import { db } from '../firebase';
 import Card from '../components/Card';
 
-const AllTeachers = () => {
+const OurFaculty = () => {
   var [studentData, setStudentData] = useState([]);
   const navigate = useNavigate();
 
@@ -55,4 +55,4 @@ const AllTeachers = () => {
   )
 }
 
-export default AllTeachers
+export default OurFaculty
